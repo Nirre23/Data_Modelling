@@ -26,7 +26,7 @@
 
 **Initial naive conceptual ERD**
 
-<img src = '../assets\Exercise_01.png'>
+<img src = '../assets\Exercise_01.png' width=300>
 
 **Initial tables**
 
