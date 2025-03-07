@@ -196,4 +196,4 @@ Students, courses, professors, enrollment
 <img src = '../assets/Students_courses.png' width = 500>
 
 b) See attributes below:
-<img src = '../assets/students_erd.png' width = 500>
+<img src="../assets/students_erd.png" width="500">
