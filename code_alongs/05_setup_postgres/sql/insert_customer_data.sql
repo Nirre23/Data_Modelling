@@ -29,7 +29,4 @@ VALUES
         'ivar@danes.com'
     );
 
-SELECT
-    *
-FROM
-    customer;
+
