@@ -30,3 +30,13 @@ VALUES
     );
 
 
+INSERT INTO
+    ezecream_05.customer (customer_id,first_name, last_name, address, email)
+VALUES
+    (
+        50,
+        'Ubbe',
+        'Lothbrok',
+        '1 Valhalla Way',
+        'ubbe@kattegat.com'
+    )

@@ -5,14 +5,16 @@ SET
 TRUNCATE TABLE orders RESTART IDENTITY CASCADE;
 
 INSERT INTO
-    orders (customer_id, order_date)
+ezecream_05.orders (customer_id, order_date)
 VALUES
     (3, '2025-04-05'),
     (4, '2025-03-10'),
     (4, '2025-03-11'),
-    (4, '2025-03-11');
+    (4, '2025-03-11'),
+    (50, '2025-03-11');
+
 
 SELECT
     *
 FROM
-    orders;
+    ezecream_05.orders;
