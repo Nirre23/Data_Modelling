@@ -5,7 +5,7 @@ SET
 TRUNCATE TABLE orderline RESTART IDENTITY CASCADE;
 
 INSERT INTO
-    orderline (order_id, product_id, quantity)
+    Orderline (order_id, product_id, quantity)
 VALUES
     (3, 3, 20),
     (4, 2, 5);
@@ -13,4 +13,4 @@ VALUES
 SELECT
     *
 FROM
-    orderline;
+    ezecream_05.orderline;

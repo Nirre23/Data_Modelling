@@ -5,13 +5,13 @@ SET
 TRUNCATE TABLE product RESTART IDENTITY CASCADE;
 
 INSERT INTO
-    product (name, price)
+    Product (product_id,name, price)
 VALUES
-    ('blåbärsmagi', 35),
-    ('lakritsdrömmar', 40),
-    ('lichipichi', 30);
+    (1,'blåbärsmagi', 35),
+    (2,'lakritsdrömmar', 40),
+    (3,'lichipichi', 30);
 
 SELECT
     *
 FROM
-    product;
+    ezecream_05.product;
