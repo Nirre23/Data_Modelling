@@ -320,3 +320,53 @@ b )
 
 c)
 
+- A customer can make one or many orders.
+- A order can only belong to one customer.
+- An order can contain one ore many products.
+- A product can appear in on or many orders.
+- A product can be in one category.
+- A category can contain many products.
+- An orderline links a product to an order.
+- Every orderline is connected to one order and one product.
+- Orderline table makes sure the right products and amount registers for everh order.
+- Product table has the stock quantity status and price for every product.
+- When a orderline is created, the stock quantity for the actual product is reduced.
+- The total amount for an order is calculated on the sum of prices of products in the order, multiplied by the quantity in the orderline.
+
+# 7. Theoretical questions
+a) What is a conceptual data model, and why is it important?
+
+b) Storing age in a database, is that a good idea, why?
+
+c) What are the three types of data structures, and how do they differ?
+
+d) Give examples of how each data structure is used in real-world applications
+
+e) What is cardinality in data modeling, and why is it important?
+
+f) What are the different steps of data modeling?
+
+g) What factors influence the choice between using an RDBMS and NoSQL?
+
+### Solution
+
+a)
+A conceptual data model is a abstract and high-level representation of the key entities (objects or units) in a system nad their relationships.
+
+b) Storing age in a database is not recommended because the age changes every year for every person in the database. It would be a lot of work to manually change the age everytime someone has a birthday. It is better to store the date of birth.
+
+c) Conceptual, Logical, Physical.
+Conceptual data structure describes the entites and their relationships.
+A logical data structure has more detail like datatypes and keys (primary, foreign)
+A physical data model draws on the requirements from the logical model to create a real database. With sql code eg.
+
+d) A conceptual data model can be used in e-commerce with entites like customer, product, order etc.
+Focuses on the high-level view of data and its relationships (e.g., entities and their connections).
+
+Logical Data Model: Defines the structure in more detail, including tables, attributes, and relationships, without considering physical storage. Can also be used in e-commerce.
+
+Physical Data Model: Describes the actual implementation details, including how data is stored, indexed, and optimized for a specific database system.
+
+e) Cardinality refers to the number of instances of one entity that can or must be associated with each instance of another entity in a relationship. In database design and ERDs,
+cardinality defines the number of occurences of on entity in relation to another. Understanding cardinality is crucial for definging relationships in a database.
+
