@@ -1,4 +1,5 @@
 # 0. Convert into json-format
+
 a)
 <img src = '../assets/employees-png.png' width = 300>
 <br>
@@ -6,22 +7,22 @@ a)
 b.)
 
 {
-  "Employees" [
-      {
-      "employee_id: 1,
-      "first_name": "Hakan,
-      "last_name" : "Hakansson",
-      "department": "HR",
-      "salary" : 30000
-    },
-    {
-      "employee_id": 2,
-      "first_name" : "Bob",
-      "last_name" : "Bobson",
-      "department : "IT",
-      "salary : "35000"
-    }
-  ]
+"Employees" [
+{
+"employee_id: 1,
+"first_name": "Hakan,
+"last_name" : "Hakansson",
+"department": "HR",
+"salary" : 30000
+},
+{
+"employee_id": 2,
+"first_name" : "Bob",
+"last_name" : "Bobson",
+"department : "IT",
+"salary : "35000"
+}
+]
 }
 
 # 1. Convert json-file to tables
@@ -207,6 +208,48 @@ d)
 - Each Rental is for one Car
 - Each
 
+## 4. Online Store
+
+You are designing a database for an online store that sells multiple products. Customers can place multiple orders, and each order contains multiple products.
+
+a) Identify entities and their relationships
+
+b) Create a conceptual ERD with cardinalities
+
+### Solution
+
+a)
+
+# Customer
+
+| Customer_id | name | email | phonenumber |
+| ----------- | ---- | ----- | ----------- |
+
+# Orders
+
+| Order_id | customer_id | order_date |
+| -------- | ----------- | ---------- |
+
+# Product
+
+| product_id | price | name |
+| ---------- | ----- | ---- |
+
+# Ordeline (bridgetable)
+
+| orderline_id | order_id | product_id | quanitity |
+| ------------ | -------- | ---------- | --------- |
+
+- A Customer can be linked to zero, one or many orders
+- An order can be linked to one and only one customer.
+- An order can contain on or many product.
+- One or many prodduct can be in an order.
+- Every row in orderline represents a specific order and stores the quantity of that product in the order.
+
+b) See image below:
+
+<img src = ../assets/online_store.png width = 400>
+
 ## 5. University management system
 
 A university needs a system to manage students, courses, and professors.
@@ -230,3 +273,46 @@ Students, courses, professors, enrollment
 b) See attributes below:
 <br>
 <img src="../assets\students_ERD.png" width = 500>
+
+## 6 Onshop
+
+An e-commerce platform Onshop manages customers, orders, and products.
+
+a customer can place multiple orders.
+each order contains multiple products.
+a product can belong to multiple categories.
+a) Identify key entities and their attributes (e.g., customer_name, order_date)
+
+b) Sketch the conceptual ERD.
+
+c) Define business rules
+
+## Solution
+
+a )
+### Customer
+
+customer_id,name,phone_number,email,address
+
+### Product
+
+product_id, price, name
+
+### Order
+
+order_id, order_date, customer_id, total_amount
+
+### Category
+
+category_id, name, description
+
+### Orderline
+
+orderline_id, order_id, product_id, quantity,
+
+### ProductCategory
+
+product_id, category_id
+
+b ) 
+
