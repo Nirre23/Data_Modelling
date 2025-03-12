@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS OrderLine (
 CREATE TABLE IF NOT EXISTS Product (
     product_id SERIAL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    price DOUBLE NOT NULL
+    price INTEGER NOT NULL
 );
 -- TODO for reader: implement the rest of the physical logical diagram
+
+SELECT * from Customer;

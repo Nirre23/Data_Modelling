@@ -1,28 +1,55 @@
-<!-- # 1. Convert json-file to tables
+# 0. Convert into json-format
+a)
+<img src = '../assets/employees-png.png' width = 300>
+<br>
+<br>
+b.)
+
+{
+  "Employees" [
+      {
+      "employee_id: 1,
+      "first_name": "Hakan,
+      "last_name" : "Hakansson",
+      "department": "HR",
+      "salary" : 30000
+    },
+    {
+      "employee_id": 2,
+      "first_name" : "Bob",
+      "last_name" : "Bobson",
+      "department : "IT",
+      "salary : "35000"
+    }
+  ]
+}
+
+# 1. Convert json-file to tables
+
 ''' You have this json data, convert it into three tables: Hospital, Department and Doctor. Fill these tables with data. Do this manually and not programmatically.
 
 {
-  "hospital": "Sjukhusstock",
-  "address": "Drottninggatan 3, Stockholm",
-  "departments": [
-    {
-      "name": "Kardiologi",
-      "doctors": [
-        { "id": 1, "name": "Dr. Abra Abrahamson" },
-        { "id": 2, "name": "Dr. Erika Eriksson" }
-      ]
-    },
-    {
-      "name": "Neurologi",
-      "doctors": [{ "id": 3, "name": "Dr. Sven Svensson" }]
-    }
-  ]
+"hospital": "Sjukhusstock",
+"address": "Drottninggatan 3, Stockholm",
+"departments": [
+{
+"name": "Kardiologi",
+"doctors": [
+{ "id": 1, "name": "Dr. Abra Abrahamson" },
+{ "id": 2, "name": "Dr. Erika Eriksson" }
+]
+},
+{
+"name": "Neurologi",
+"doctors": [{ "id": 3, "name": "Dr. Sven Svensson" }]
+}
+]
 } -->
 
 ### Solution
 
-<!-- - identify entities
-- identify relationships### --> -->
+- identify entities
+- identify relationships
 
 **Initial naive conceptual ERD**
 
@@ -107,8 +134,10 @@ a.
 | ISBN | title | author |
 | ---- | ----- | ------ |
 
-# Note ! 
+# Note !
+
 ISBN is a unique number for each book, which could be used as a Primary Key, this will make it into a natural key.
+
 ## Member
 
 | membership_id | name | phone | address | email |
@@ -141,10 +170,10 @@ c.
 <br>
 
 # 3 conceptual ERD to words
+
 This is an ERD conceptual diagram that a database designer and the business stakeholders agreed upon in a car rental company called Carent.
 
   <img src="https://github.com/kokchun/assets/blob/main/data_modeling/car_rental.png?raw=true" alt="car rent" width="500">
-
 
 a) Describe the entities in this conceptual ERD.
 
@@ -155,6 +184,7 @@ c) Describe the relationships between the entities (one-to-many, one-to-one and 
 d) Define the relationship statement for example: "A Customer can have one or more Rentals".
 
 a
+
 - Customer is a person that can rent cars.
 - Car is a vehicle than can be rented by a Customer.
 - Rental (composite entity) is a transaction between Customer and Car
@@ -164,16 +194,18 @@ a
 b) see image above
 
 c)
+
 - Customer to rental (one to many)
 - Rental to customer (Many to one)
 - Rental to car (Many to one)
 - Car to rental (One to many
 
 d)
+
 - Each Customer makes on or more Rentals over time
 - Each Rental is connected to one Customer
 - Each Rental is for one Car
-- Each 
+- Each
 
 ## 5. University management system
 
@@ -191,7 +223,7 @@ c) Draw conceptual ERD with cardinalities
 
 d) Define business rules (e.g. a student can enroll in max 4 courses)
 
-a) 
+a)
 Students, courses, professors, enrollment
 <img src = '../assets/Students_courses.png' width = 500>
 
