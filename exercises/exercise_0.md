@@ -316,3 +316,7 @@ product_id, category_id
 
 b ) 
 
+<img src = ../assets/onshop.png width = 300>
+
+c)
+
