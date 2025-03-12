@@ -370,3 +370,27 @@ Physical Data Model: Describes the actual implementation details, including how 
 e) Cardinality refers to the number of instances of one entity that can or must be associated with each instance of another entity in a relationship. In database design and ERDs,
 cardinality defines the number of occurences of on entity in relation to another. Understanding cardinality is crucial for definging relationships in a database.
 
+f) 
+Conceptual data modeling to identift entities and relationships.
+Logical data modeling to refine the conceptual model by defining attributes, keys, normalization rules while remaining independent of  a specific database system.
+Physical data modeling to create a database schema including tables, indexes, constrains and data types, tailored to a specific database system eg  postgreSQL or MySQL.
+
+- RDBMS	- RElational database management system
+- relational model - A way of structuring data using tables, rows and columns
+- conceptual model- a high level data model to show entities and relationships	
+- logical model	- A detailed representation of data structures and relationships
+- physical model	- The actual implementation of a database on a system.
+- ERD - A diagram that visually displays the entites and their relationships.
+- data modeling	- The process of designing a database structure.
+- data integrity	- Ensuring accuracy and reliabillity of data.
+- data consistency	- Maintaining uniform and valid data acoss  the database 
+-field - single piece of data in a column.
+- attribute	- a property or characteristic of an entity 
+- data type	- the kind of data stored in a field (eg. INT,VARCHAR)
+- tuple	- A single row in a relational table
+- data redundancy	Unnecessary duplicates of data in a database
+- transaction	- A sequence of database operations that must be completed together.
+- cardinality	-  The number of relationships between entities
+- one-to-one	 A relationship where one entity is linked to only one other entity
+- one-to-many- a relationship where one entity is linked to multiple entities.
+
