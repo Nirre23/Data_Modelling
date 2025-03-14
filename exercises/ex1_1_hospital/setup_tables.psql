@@ -1,9 +1,11 @@
 CREATE SCHEMA IF NOT EXISTS exercise1;
 
-drop table if exists exercise1.HospitalDepartment CASCADE;
-drop table if exists exercise1.hospital CASCADE;
-drop table if exists exercise1.department CASCADE;
-drop table if exists exercise1.doctor CASCADE;
+DROP TABLE IF EXISTS exercise1.HospitalDepartment CASCADE;
+DROP TABLE IF EXISTS exercise1.HospitalDoctor CASCADE;
+DROP TABLE IF EXISTS exercise1.DepartmentDoctor CASCADE;
+DROP TABLE IF EXISTS exercise1.hospital CASCADE;
+DROP TABLE IF EXISTS exercise1.department CASCADE;
+DROP TABLE IF EXISTS exercise1.doctor CASCADE;
 
 CREATE TABLE IF NOT EXISTS exercise1.hospital (
     hospital_id SERIAL PRIMARY KEY,
