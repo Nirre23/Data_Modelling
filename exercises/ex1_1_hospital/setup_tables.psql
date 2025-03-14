@@ -1,3 +1,54 @@
+-- CREATE SCHEMA IF NOT EXISTS exercise1;
+
+-- DROP TABLE IF EXISTS exercise1.HospitalDepartment CASCADE;
+-- DROP TABLE IF EXISTS exercise1.HospitalDoctor CASCADE;
+-- DROP TABLE IF EXISTS exercise1.DepartmentDoctor CASCADE;
+-- DROP TABLE IF EXISTS exercise1.hospital CASCADE;
+-- DROP TABLE IF EXISTS exercise1.department CASCADE;
+-- DROP TABLE IF EXISTS exercise1.doctor CASCADE;
+
+-- CREATE TABLE IF NOT EXISTS exercise1.hospital (
+--     hospital_id SERIAL PRIMARY KEY,
+--     name VARCHAR(100) NOT NULL,
+--     address VARCHAR(100) NOT NULL
+-- );
+
+-- CREATE TABLE IF NOT EXISTS exercise1.department (
+--     department_id SERIAL PRIMARY KEY,
+--     name VARCHAR(100) NOT NULL
+-- );
+
+-- CREATE TABLE IF NOT EXISTS exercise1.doctor (
+--     doctor_id SERIAL PRIMARY KEY,
+--     name VARCHAR(50) NOT NULL
+-- );
+
+-- CREATE TABLE IF NOT EXISTS exercise1.HospitalDepartment (
+--     hospital_id INT NOT NULL,
+--     department_id INT NOT NULL,
+--     PRIMARY KEY (hospital_id, department_id),
+--     FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) on DELETE CASCADE,
+--     FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) on delete CASCADE
+-- );
+
+-- CREATE TABLE IF NOT EXISTS exercise1.DepartmentDoctor (
+--     department_id INT NOT NULL,
+--     doctor_id INT NOT NULL,
+--     PRIMARY KEY (department_id, doctor_id),
+--     FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) on DELETE CASCADE,
+--     FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) on DELETE CASCADE
+-- );
+
+-- CREATE TABLE IF NOT EXISTS HospitalDoctor (
+--     hospital_id INT NOT NULL,
+--     doctor_id INT NOT NULL,
+--     PRIMARY KEY (hospital_id,doctor_id),
+--     FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) ON DELETE CASCADE,
+--     FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) ON DELETE CASCADE
+-- );
+
+-- filepath: c:\Users\nirre\OneDrive\Skrivbord\github_repos\Data_Modelling\exercises\ex1_1_hospital\setup_tables.psql
+
 CREATE SCHEMA IF NOT EXISTS exercise1;
 
 DROP TABLE IF EXISTS exercise1.HospitalDepartment CASCADE;
@@ -9,8 +60,8 @@ DROP TABLE IF EXISTS exercise1.doctor CASCADE;
 
 CREATE TABLE IF NOT EXISTS exercise1.hospital (
     hospital_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    address VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL UNIQUE,
+    address VARCHAR(100) NOT NULL CHECK (address <> '')
 );
 
 CREATE TABLE IF NOT EXISTS exercise1.department (
@@ -20,29 +71,29 @@ CREATE TABLE IF NOT EXISTS exercise1.department (
 
 CREATE TABLE IF NOT EXISTS exercise1.doctor (
     doctor_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS exercise1.HospitalDepartment (
     hospital_id INT NOT NULL,
     department_id INT NOT NULL,
     PRIMARY KEY (hospital_id, department_id),
-    FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) on DELETE CASCADE,
-    FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) on delete CASCADE
+    FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS exercise1.DepartmentDoctor (
     department_id INT NOT NULL,
     doctor_id INT NOT NULL,
     PRIMARY KEY (department_id, doctor_id),
-    FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) on DELETE CASCADE,
-    FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) on DELETE CASCADE
+    FOREIGN KEY (department_id) REFERENCES exercise1.department(department_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS HospitalDoctor (
+CREATE TABLE IF NOT EXISTS exercise1.HospitalDoctor (
     hospital_id INT NOT NULL,
     doctor_id INT NOT NULL,
-    PRIMARY KEY (hospital_id,doctor_id),
+    PRIMARY KEY (hospital_id, doctor_id),
     FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) ON DELETE CASCADE
 );
