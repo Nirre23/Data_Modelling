@@ -19,6 +19,13 @@ CREATE TABLE IF NOT EXISTS Orders (
     FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
 );
 
+-- Product Table
+CREATE TABLE IF NOT EXISTS Product (
+    product_id SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    price INTEGER NOT NULL
+);
+
 -- OrderLine Table
 CREATE TABLE IF NOT EXISTS OrderLine (
     orderline_id SERIAL PRIMARY KEY,
@@ -29,12 +36,10 @@ CREATE TABLE IF NOT EXISTS OrderLine (
     FOREIGN KEY (product_id) REFERENCES Product (product_id)
 );
 
--- Product Table
-CREATE TABLE IF NOT EXISTS Product (
-    product_id SERIAL PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    price INTEGER NOT NULL
-);
+
+
+
+
 -- TODO for reader: implement the rest of the physical logical diagram
 
 SELECT * from Customer;

@@ -1,4 +1,4 @@
-    SET search_path TO ezecream_05;
+SET search_path TO ezecream_05;
 
 INSERT INTO
     Customer (first_name, last_name, email, address)
@@ -28,26 +28,7 @@ VALUES
         '4 The Great Heathen Army Camp'
     );
 
-INSERT INTO
-    Customer (
-        customer_id,
-        first_name,
-        last_name,
-        email,
-        address
-    )
-VALUES
-    (
-        50,
-        'Ubbe',
-        'Lothbrok',
-        'ragnar@kattegat.com',
-        '1 Valhalla Way'
-    );
 
--- TODO: for reader - find out how to delete this row with customer_id 50
-
-SELECT
-    *
+SELECT *    
 FROM
-    customer;
+    ezecream_05.customer;
