@@ -1,0 +1,38 @@
+INSERT INTO exercise1.hospital(name,address) VALUES
+('SÖS', 'Sjukhusbacken 10'),
+('Sahlgrenska', 'Sahlgrenskas gata 10'),
+('Högsbo Sjukhus','Lilla Kapplandsgatan 10');
+
+INSERT INTO exercise1.department(name) VALUES
+('Kardiologi'),
+('Neurologi'),
+('Ortopedi'),
+('Medicin');
+
+INSERT INTO exercise1.doctor(name) VALUES
+('Alba Albasson'),
+('Viktor Viktorsson'),
+('Ada Lovelace'),
+('Dr. Who');
+
+INSERT INTO exercise1.departmentdoctor(department_id, doctor_id) VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4);
+
+-- INSERT INTO exercise1.hospitaldepartment (hospital_id, department_id) VALUES
+-- (50,1);
+
+
+DELETE FROM exercise1.department
+WHERE department_id IN (
+    SELECT department_id 
+    FROM (
+        SELECT department_id, 
+               name, 
+               ROW_NUMBER() OVER (PARTITION BY name ORDER BY department_id) AS row_num
+        FROM exercise1.department
+    ) AS duplicates
+    WHERE row_num > 1
+);

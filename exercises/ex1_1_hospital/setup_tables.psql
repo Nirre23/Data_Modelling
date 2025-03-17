@@ -97,3 +97,4 @@ CREATE TABLE IF NOT EXISTS exercise1.HospitalDoctor (
     FOREIGN KEY (hospital_id) REFERENCES exercise1.hospital(hospital_id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES exercise1.doctor(doctor_id) ON DELETE CASCADE
 );
+

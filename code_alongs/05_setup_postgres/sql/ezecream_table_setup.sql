@@ -38,8 +38,6 @@ CREATE TABLE IF NOT EXISTS OrderLine (
 
 
 
-
-
 -- TODO for reader: implement the rest of the physical logical diagram
 
 SELECT * from Customer;
