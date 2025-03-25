@@ -6,9 +6,8 @@ password = input("Enter your password: ")
 
 with connect_postgres().connect() as conn:
     result = conn.execute(
-        text(
-            f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
-        )
+        text("SELECT * FROM users WHERE username = :username AND password = :password"),
+            {"username": username, "password": password},
     ).fetchall()
     
     
