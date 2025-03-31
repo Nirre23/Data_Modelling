@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   postgres:
     image: postgres:latest
@@ -11,36 +12,13 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - data_modeling_course:/var/lib/postgresql/data
+      - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./insert_data.sql:/docker-entrypoint-initdb.d/insert_data.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 5s
       retries: 5
       timeout: 3s
 
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-  mongo-express:
-    image: mongo-express:latest
-    container_name: mongo-express
-    restart: always
-    ports:
-      - "8081:8081"
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USER}
-      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
-      ME_CONFIG_MONGODB_SERVER: mongodb
-      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
-
 volumes:
   data_modeling_course:
-  mongo_data:
