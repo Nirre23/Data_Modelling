@@ -1,38 +1,45 @@
 --Hämtar för och efternamn på alla studenter i Klass A
 
 SELECT
-    Student.FirstName,
-    Student.LastName,
-    Class.ClassName
+    Student.First_Name,
+    Student.Last_Name,
+    Class.Class_Name
 FROM
     Student
 JOIN
-    Class ON Student.ClassID = Class.ClassID
+    Class ON Student.Class_ID = Class.Class_ID
 WHERE
-    Class.ClassName = 'Class A';
+    Class.Class_Name = 'Class A';
 
--- För att hämta kursnamn och professorernas för - och efternamn
+-- För att hämta kursnamn och professorernas för - och efternamn för kursen "Financial Accounting"
 SELECT
-    Course.CourseName,
-    Professor.FirstName,
-    Professor.LastName
+    Course.Course_Name,
+    Professor.First_Name,
+    Professor.Last_Name
 FROM
     Course
 JOIN
-    Professor_Course ON Course.CourseID = Professor_Course.CourseID
+    Professor_Course ON Course.Course_ID = Professor_Course.Course_ID
 JOIN
-    Professor ON Professor_Course.ProfessorID = Professor.ProfessorID
+    Professor ON Professor_Course.Professor_ID = Professor.Professor_ID
 WHERE
-    Course.CourseName = 'Financial Accounting';
+    Course.Course_Name = 'Financial Accounting';
 
---För att hämta utbildningsledarens för- och efternamn för Klass B
+-- För att hämta kursnamn och utbildningsledarens för - och efternamn för klass B
 SELECT
-    Class.ClassName,
-    TrainingManager.FirstName,
-    TrainingManager.LastName
+    Class.Class_Name,
+    Training_Manager.First_Name,
+    Training_Manager.Last_Name
 FROM
     Class
 JOIN
-    TrainingManager ON Class.LeaderID = TrainingManager.LeaderID
+    Training_Manager ON Class.Leader_ID = Training_Manager.Leader_ID
 WHERE
-    Class.ClassName = 'Class B';
+    Class.Class_Name = 'Class B';
+
+SELECT course.course_id,course.course_name,professor.first_name,professor.last_name
+from course
+left join professor_course on course.course_id = professor_course.course_id
+left join professor on professor_course.professor_id = professor.professor_id
+where course.is_standalone = TRUE;
+

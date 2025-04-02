@@ -1,109 +1,116 @@
 -- Skapa tabellerna utan främmande nyckelbegränsningar
-CREATE TABLE Student (
-    StudentID INT PRIMARY KEY,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    Email VARCHAR(255) UNIQUE,
-    ClassID INT
+CREATE TABLE student (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    class_id INT
 );
 
-CREATE TABLE Student_Sensitive (
-    StudentID INT PRIMARY KEY,
-    PersonalNumber VARCHAR(255)
+CREATE TABLE student_sensitive (
+    student_id INT PRIMARY KEY,
+    personal_number VARCHAR(255)
 );
 
-CREATE TABLE Class (
-    ClassID INT PRIMARY KEY,
-    ClassName VARCHAR(255),
-    ProgramID INT,
-    LeaderID INT,
-    CampusID INT
+CREATE TABLE class (
+    class_id INT PRIMARY KEY,
+    class_name VARCHAR(255),
+    program_id INT,
+    leader_id INT,
+    campus_id INT
 );
 
-CREATE TABLE Program (
-    ProgramID INT PRIMARY KEY,
-    ProgramName VARCHAR(255)
+CREATE TABLE program (
+    program_id INT PRIMARY KEY,
+    program_name VARCHAR(255)
 );
 
-CREATE TABLE Course (
-    CourseID INT PRIMARY KEY,
-    CourseName VARCHAR(255),
-    CourseCode VARCHAR(255),
-    Credits INT,
-    Description TEXT,
-    Course_typeID INT
+CREATE TABLE course (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(255),
+    course_code VARCHAR(255),
+    credits INT,
+    description TEXT,
+    course_type_id INT
 );
 
-CREATE TABLE Course_Program (
-    ProgramID INT,
-    CourseID INT,
-    PRIMARY KEY (ProgramID, CourseID)
+CREATE TABLE course_program (
+    program_id INT,
+    course_id INT,
+    PRIMARY KEY (program_id, course_id)
 );
 
-CREATE TABLE Class_Course (
-    ClassID INT,
-    CourseID INT,
-    PRIMARY KEY (ClassID, CourseID)
+CREATE TABLE class_course (
+    class_id INT,
+    course_id INT,
+    PRIMARY KEY (class_id, course_id)
 );
 
-CREATE TABLE Professor (
-    ProfessorID INT PRIMARY KEY,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    Email VARCHAR(255) UNIQUE
+CREATE TABLE professor (
+    professor_id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE Professor_Course (
-    ProfessorID INT,
-    CourseID INT,
-    PRIMARY KEY (ProfessorID, CourseID)
+CREATE TABLE professor_course (
+    professor_id INT,
+    course_id INT,
+    PRIMARY KEY (professor_id, course_id)
 );
 
-CREATE TABLE TrainingManager (
-    LeaderID INT PRIMARY KEY,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    Email VARCHAR(255) UNIQUE
+CREATE TABLE training_manager (
+    leader_id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE ConsultantCompany (
-    ConsultantID INT PRIMARY KEY,
-    CompanyName VARCHAR(255),
-    Address VARCHAR(255),
-    OrgNumber NUMERIC,
-    HourlyRate DECIMAL
+CREATE TABLE consultant_company (
+    consultant_id INT PRIMARY KEY,
+    company_name VARCHAR(255),
+    address VARCHAR(255),
+    org_number NUMERIC,
+    hourly_rate DECIMAL
 );
 
-CREATE TABLE Campus (
-    CampusID INT PRIMARY KEY,
-    Location VARCHAR(255)
+CREATE TABLE campus (
+    campus_id INT PRIMARY KEY,
+    location VARCHAR(255)
 );
 
-CREATE TABLE Consultant_Professor (
-    ProfessorID INT,
-    ConsultantID INT,
-    StartDate DATE,
-    EndDate DATE,
-    PRIMARY KEY (ProfessorID, ConsultantID)
+CREATE TABLE consultant_professor (
+    professor_id INT,
+    consultant_id INT,
+    start_date DATE,
+    end_date DATE,
+    PRIMARY KEY (professor_id, consultant_id)
 );
 
-CREATE TABLE Course_type (
-    Course_typeID INT PRIMARY KEY,
+CREATE TABLE course_type (
+    course_type_id INT PRIMARY KEY,
     course_type_name VARCHAR(50)
 );
 
 -- Lägger till Foreign Keys med ALTER TABLE
-ALTER TABLE Student ADD FOREIGN KEY (ClassID) REFERENCES Class(ClassID);
-ALTER TABLE Student_Sensitive ADD FOREIGN KEY (StudentID) REFERENCES Student(StudentID);
-ALTER TABLE Class ADD FOREIGN KEY (ProgramID) REFERENCES Program(ProgramID);
-ALTER TABLE Class ADD FOREIGN KEY (LeaderID) REFERENCES TrainingManager(LeaderID);
-ALTER TABLE Class ADD FOREIGN KEY (CampusID) REFERENCES Campus(CampusID);
-ALTER TABLE Course ADD FOREIGN KEY (Course_typeID) REFERENCES Course_type(Course_typeID);
-ALTER TABLE Course_Program ADD FOREIGN KEY (ProgramID) REFERENCES Program(ProgramID);
-ALTER TABLE Course_Program ADD FOREIGN KEY (CourseID) REFERENCES Course(CourseID);
-ALTER TABLE Class_Course ADD FOREIGN KEY (ClassID) REFERENCES Class(ClassID);
-ALTER TABLE Class_Course ADD FOREIGN KEY (CourseID) REFERENCES Course(CourseID);
-ALTER TABLE Professor_Course ADD FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID);
-ALTER TABLE Professor_Course ADD FOREIGN KEY (CourseID) REFERENCES Course(CourseID);
-ALTER TABLE Consultant_Professor ADD FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID);
-ALTER TABLE Consultant_Professor ADD FOREIGN KEY (ConsultantID) REFERENCES ConsultantCompany(ConsultantID);
+ALTER TABLE student ADD FOREIGN KEY (class_id) REFERENCES class(class_id);
+ALTER TABLE student_sensitive ADD FOREIGN KEY (student_id) REFERENCES student(student_id);
+ALTER TABLE class ADD FOREIGN KEY (program_id) REFERENCES program(program_id);
+ALTER TABLE class ADD FOREIGN KEY (leader_id) REFERENCES training_manager(leader_id);
+ALTER TABLE class ADD FOREIGN KEY (campus_id) REFERENCES campus(campus_id);
+ALTER TABLE course ADD FOREIGN KEY (course_type_id) REFERENCES course_type(course_type_id);
+ALTER TABLE course_program ADD FOREIGN KEY (program_id) REFERENCES program(program_id);
+ALTER TABLE course_program ADD FOREIGN KEY (course_id) REFERENCES course(course_id);
+ALTER TABLE class_course ADD FOREIGN KEY (class_id) REFERENCES class(class_id);
+ALTER TABLE class_course ADD FOREIGN KEY (course_id) REFERENCES course(course_id);
+ALTER TABLE professor_course ADD FOREIGN KEY (professor_id) REFERENCES professor(professor_id);
+ALTER TABLE professor_course ADD FOREIGN KEY (course_id) REFERENCES course(course_id);
+ALTER TABLE consultant_professor ADD FOREIGN KEY (professor_id) REFERENCES professor(professor_id);
+ALTER TABLE consultant_professor ADD FOREIGN KEY (consultant_id) REFERENCES consultant_company(consultant_id);
+
+INSERT INTO Course (course_id, course_name, course_code, credits, description, course_type_id, is_standalone)
+VALUES (1010, 'Introduction to Data Science', 'DS101', 7.5, 'A foundational course covering statistics, machine learning, and data processing techniques.', 2, TRUE);
+
+
+INSERT INTO Professor_Course (professor_id, course_id)
+VALUES (1, 1010);
