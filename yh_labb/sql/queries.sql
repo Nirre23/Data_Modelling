@@ -48,3 +48,5 @@ left join professor_course on course.course_id = professor_course.course_id
 left join professor on professor_course.professor_id = professor.professor_id
 where course.is_standalone = TRUE;
 
+
+
