@@ -81,3 +81,10 @@ INSERT INTO Course_type (course_type_id, course_type_name) VALUES
 (1, 'Programming'),
 (2, 'Finance'),
 (3, 'Engineering');
+
+INSERT INTO Course (course_id, course_name, course_code, credits, description, course_type_id, is_standalone)
+VALUES (1010, 'Introduction to Data Science', 'DS101', 7.5, 'A foundational course covering statistics, machine learning, and data processing techniques.', 2, TRUE);
+
+
+INSERT INTO Professor_Course (professor_id, course_id)
+VALUES (1, 1010);

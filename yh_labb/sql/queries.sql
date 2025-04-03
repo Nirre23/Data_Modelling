@@ -12,6 +12,7 @@ WHERE
     Class.Class_Name = 'Class A';
 
 -- För att hämta kursnamn och professorernas för - och efternamn för kursen "Financial Accounting"
+
 SELECT
     Course.Course_Name,
     Professor.First_Name,
@@ -26,6 +27,7 @@ WHERE
     Course.Course_Name = 'Financial Accounting';
 
 -- För att hämta kursnamn och utbildningsledarens för - och efternamn för klass B
+
 SELECT
     Class.Class_Name,
     Training_Manager.First_Name,
@@ -37,7 +39,10 @@ JOIN
 WHERE
     Class.Class_Name = 'Class B';
 
-SELECT course.course_id,course.course_name,professor.first_name,professor.last_name
+
+--hämtar kursID, kursnamn,professorns för och efternamn för alla kurser som är fristående
+
+SELECT course.course_id,course.course_name,professor.first_name,professor.last_name,is_standalone
 from course
 left join professor_course on course.course_id = professor_course.course_id
 left join professor on professor_course.professor_id = professor.professor_id

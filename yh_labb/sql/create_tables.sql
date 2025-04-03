@@ -108,9 +108,3 @@ ALTER TABLE professor_course ADD FOREIGN KEY (course_id) REFERENCES course(cours
 ALTER TABLE consultant_professor ADD FOREIGN KEY (professor_id) REFERENCES professor(professor_id);
 ALTER TABLE consultant_professor ADD FOREIGN KEY (consultant_id) REFERENCES consultant_company(consultant_id);
 
-INSERT INTO Course (course_id, course_name, course_code, credits, description, course_type_id, is_standalone)
-VALUES (1010, 'Introduction to Data Science', 'DS101', 7.5, 'A foundational course covering statistics, machine learning, and data processing techniques.', 2, TRUE);
-
-
-INSERT INTO Professor_Course (professor_id, course_id)
-VALUES (1, 1010);
