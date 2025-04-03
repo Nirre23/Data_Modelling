@@ -49,4 +49,39 @@ left join professor on professor_course.professor_id = professor.professor_id
 where course.is_standalone = TRUE;
 
 
+--hämtar alla programnamn
+SELECT Program_Name
+FROM Program;
 
+--hämtar location för alla campus
+SELECT Location
+FROM Campus;
+
+-- hämtar proffessorernas hela namn och emails
+SELECT Email,first_name,last_name
+FROM Professor;
+
+-- hämtar alla kursnamn och kurskoder
+SELECT Course_Name, Course_Code
+FROM Course;
+
+--hämtar alla kurser och om de är fristående eller inte
+select course,is_standalone
+from course;
+
+-- hämtar studenternas hela namn och deras programnamn
+SELECT Student.First_Name, Student.Last_Name, Program.Program_Name
+FROM Student
+JOIN Class ON Student.Class_ID = Class.Class_ID
+JOIN Program ON Class.Program_ID = Program.Program_ID;
+
+-- hämtar alla kursnamn och deras kurstyper
+SELECT Course.Course_Name, Course_Type.Course_Type_Name
+FROM Course
+JOIN Course_Type ON Course.Course_Type_ID = Course_Type.Course_Type_ID;
+
+--  hämtar alla proffessorers namn och vilket företag de kommer ifrån
+SELECT Professor.First_Name, Professor.Last_Name, Consultant_Company.Company_Name
+FROM Professor
+JOIN Consultant_Professor ON Professor.Professor_ID = Consultant_Professor.Professor_ID
+JOIN Consultant_Company ON Consultant_Professor.Consultant_ID = Consultant_Company.Consultant_ID;
