@@ -85,3 +85,8 @@ SELECT Professor.First_Name, Professor.Last_Name, Consultant_Company.Company_Nam
 FROM Professor
 JOIN Consultant_Professor ON Professor.Professor_ID = Consultant_Professor.Professor_ID
 JOIN Consultant_Company ON Consultant_Professor.Consultant_ID = Consultant_Company.Consultant_ID;
+
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'public';
+
